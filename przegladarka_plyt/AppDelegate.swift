@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    class var shared: URLSession { get {} }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let url = Foundation.URL(string: "https://lsebi.net/albums.php")
+        
+        let task = shared.dataTask(with: url)
+        
+        print(task)
+        
         return true
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -42,5 +50,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+class MusicRecord {
+    var wykonawca: String
+    var tytul: String
+    var gatunek: String
+    var rokWydania: Int
+    var liczbaSciezek: Int
+    
+    init(wykonawca: String, tytul: String, gatunek: String, rokWydania: Int, liczbaSciezek: Int){
+        self.wykonawca = wykonawca
+        self.tytul = tytul
+        self.gatunek = gatunek
+        self.rokWydania = rokWydania
+        self.liczbaSciezek = liczbaSciezek
+    }
 }
 
