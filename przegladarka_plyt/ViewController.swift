@@ -17,6 +17,10 @@ class ViewController: UIViewController {
         return musicRecords.count
     }
     
+    func getMaxIndex() -> Int {
+        return musicRecords.count - 1
+    }
+    
     @IBOutlet weak var SaveButton: UIButton!
     
     @IBOutlet weak var NewRecord: UIButton!
@@ -43,6 +47,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func NewRecordClicked(_ sender: UIButton) {
+        self.currentRecord = self.getMaxIndex() + 1
+        
         let artist = ArtistField.text ?? ""
         let title = TitleField.text ?? ""
         let genre = GenreField.text ?? ""
@@ -108,10 +114,24 @@ class ViewController: UIViewController {
         // turned off when we are at first record
         self.PreviousRecord.isEnabled = self.currentRecord > 0
         // turned off when we are at last record
-        self.NextRecord.isEnabled = self.currentRecord < self.getTotalNumber()
+        self.NextRecord.isEnabled = self.currentRecord <= self.getMaxIndex()
+        // can't remove non existing record
+        self.RemoveRecord.isEnabled = self.currentRecord <= self.getMaxIndex()
+        // we can only save if we are operating on last index
+        self.SaveButton.isEnabled = self.currentRecord == self.getMaxIndex()
+        // disable new record button if we are already createing new one
+        self.NewRecord.isEnabled = self.currentRecord < self.getMaxIndex()
         
-        if(self.currentRecord != self.getTotalNumber()){
+        if(self.currentRecord <= self.getMaxIndex()){
+            self.existingRecordView()
+        } else {
+            self.newRecordView()
+        }
+    }
+    
+    func existingRecordView(){
         let currentRecord = self.musicRecords[self.currentRecord]
+        
         self.ArtistField.text = currentRecord.artist
         self.TitleField.text = currentRecord.album
         self.GenreField.text = currentRecord.genre
@@ -119,7 +139,16 @@ class ViewController: UIViewController {
         self.TracksField.text = String(currentRecord.tracks)
         
         self.RecordXY.text = "Rekord \(self.currentRecord + 1) z \(self.getTotalNumber())"
-        }
+    }
+    
+    func newRecordView(){
+        self.ArtistField.text = ""
+        self.TitleField.text = ""
+        self.GenreField.text = ""
+        self.YearField.text = ""
+        self.TracksField.text = ""
+        
+        self.RecordXY.text = "Nowy Rekord"
     }
 
     override func viewDidLoad() {
