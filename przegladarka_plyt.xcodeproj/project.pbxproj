@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D85E9E01F9F24C100D43E65 /* MusicRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D85E9DF1F9F24C100D43E65 /* MusicRecord.swift */; };
 		AC7F84831F8CA126008B7B76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7F84821F8CA126008B7B76 /* AppDelegate.swift */; };
 		AC7F84851F8CA126008B7B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7F84841F8CA126008B7B76 /* ViewController.swift */; };
 		AC7F84881F8CA126008B7B76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC7F84861F8CA126008B7B76 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D85E9DF1F9F24C100D43E65 /* MusicRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRecord.swift; sourceTree = "<group>"; };
 		AC7F847F1F8CA126008B7B76 /* przegladarka_plyt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = przegladarka_plyt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7F84821F8CA126008B7B76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC7F84841F8CA126008B7B76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				AC7F84891F8CA126008B7B76 /* Assets.xcassets */,
 				AC7F848B1F8CA126008B7B76 /* LaunchScreen.storyboard */,
 				AC7F848E1F8CA126008B7B76 /* Info.plist */,
+				3D85E9DF1F9F24C100D43E65 /* MusicRecord.swift */,
 			);
 			path = przegladarka_plyt;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				AC7F84851F8CA126008B7B76 /* ViewController.swift in Sources */,
 				AC7F84831F8CA126008B7B76 /* AppDelegate.swift in Sources */,
+				3D85E9E01F9F24C100D43E65 /* MusicRecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +507,7 @@
 				AC7F84A91F8CA126008B7B76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC7F84AA1F8CA126008B7B76 /* Build configuration list for PBXNativeTarget "przegladarka_plytTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +516,7 @@
 				AC7F84AC1F8CA126008B7B76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC7F84AD1F8CA126008B7B76 /* Build configuration list for PBXNativeTarget "przegladarka_plytUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +525,7 @@
 				AC7F84AF1F8CA126008B7B76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
