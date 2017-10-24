@@ -44,10 +44,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var RecordXY: UILabel!
     
     @IBAction func SaveClicked(_ sender: UIButton) {
-    }
-    
-    @IBAction func NewRecordClicked(_ sender: UIButton) {
-        self.currentRecord = self.getMaxIndex() + 1
         
         let artist = ArtistField.text ?? ""
         let title = TitleField.text ?? ""
@@ -57,8 +53,21 @@ class ViewController: UIViewController {
         
         let newRecord = MusicRecord(artist, title, genre, year, tracks)
         
-        self.musicRecords.append(newRecord)
+        if(self.currentRecord <= self.getMaxIndex()){
+            self.musicRecords[self.currentRecord] = newRecord
+        } else {
+            self.musicRecords.append(newRecord)
+        }
         
+        self.updateView()
+    }
+
+    @IBAction func ModifyingField(_ sender: UITextField) {
+        self.SaveButton.isEnabled = true
+    }
+    
+    @IBAction func NewRecordClicked(_ sender: UIButton) {
+        self.currentRecord = self.getMaxIndex() + 1
         self.updateView()
     }
     
@@ -113,14 +122,14 @@ class ViewController: UIViewController {
     func updateView(){
         // turned off when we are at first record
         self.PreviousRecord.isEnabled = self.currentRecord > 0
-        // turned off when we are at last record
+        // turned off when we are after last record
         self.NextRecord.isEnabled = self.currentRecord <= self.getMaxIndex()
         // can't remove non existing record
         self.RemoveRecord.isEnabled = self.currentRecord <= self.getMaxIndex()
-        // we can only save if we are operating on last index
-        self.SaveButton.isEnabled = self.currentRecord == self.getMaxIndex()
-        // disable new record button if we are already createing new one
-        self.NewRecord.isEnabled = self.currentRecord < self.getMaxIndex()
+        // we can only save if we are operating on new record or are modifying
+        self.SaveButton.isEnabled = self.currentRecord > self.getMaxIndex()
+        // disable new record button if we are already creating new one
+        self.NewRecord.isEnabled = self.currentRecord <= self.getMaxIndex()
         
         if(self.currentRecord <= self.getMaxIndex()){
             self.existingRecordView()

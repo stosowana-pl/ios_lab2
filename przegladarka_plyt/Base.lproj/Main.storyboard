@@ -45,6 +45,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="ModifyingField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="fJl-VH-Dx8"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -62,6 +65,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="ModifyingField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="VLw-ts-cuy"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -79,6 +85,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="ModifyingField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="CKV-PC-ffZ"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -96,6 +105,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="ModifyingField:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="lux-zM-MJV"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -113,6 +125,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="ModifyingField:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="cIu-WG-0dg"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
