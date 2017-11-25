@@ -113,13 +113,35 @@ class ViewController: UIViewController {
                     }
                 }
             }
+            
             DispatchQueue.main.async {
                 self.updateView()
             }
     }).resume()
     }
+
+    
+    func persistAlbum(records: [MusicRecord]){
+        let dirPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let docsDir = dirPaths.first
+        let myFilePath = docsDir! + "/" + "myfile"
+        
+        NSKeyedArchiver.archiveRootObject(records, toFile: myFilePath)
+    }
+
+    func loadAlbum() -> [MusicRecord]{
+        let dirPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let docsDir = dirPaths.first
+        let myFilePath = docsDir! + "/" + "myfile"
+        
+        guard let records = NSKeyedUnarchiver.unarchiveObject(withFile: myFilePath) as? [MusicRecord] else { return [] }
+
+        return records
+    }
     
     func updateView(){
+        self.persistAlbum(records: self.musicRecords)
+        
         // turned off when we are at first record
         self.PreviousRecord.isEnabled = self.currentRecord > 0
         // turned off when we are after last record
@@ -162,7 +184,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.requestData()
+        
+        musicRecords = self.loadAlbum()
+        
+        if (musicRecords.isEmpty) {
+            self.requestData()
+        } else {
+            DispatchQueue.main.async {
+                self.updateView()
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
