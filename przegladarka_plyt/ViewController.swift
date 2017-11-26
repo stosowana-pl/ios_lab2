@@ -120,20 +120,18 @@ class ViewController: UIViewController {
     }).resume()
     }
 
-    
-    func persistAlbum(records: [MusicRecord]){
+    let myFilePath: String = {
         let dirPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let docsDir = dirPaths.first
-        let myFilePath = docsDir! + "/" + "myfile"
         
+        return docsDir! + "/" + "myfile"
+    }()
+    
+    func persistAlbum(records: [MusicRecord]){
         NSKeyedArchiver.archiveRootObject(records, toFile: myFilePath)
     }
 
     func loadAlbum() -> [MusicRecord]{
-        let dirPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let docsDir = dirPaths.first
-        let myFilePath = docsDir! + "/" + "myfile"
-        
         guard let records = NSKeyedUnarchiver.unarchiveObject(withFile: myFilePath) as? [MusicRecord] else { return [] }
 
         return records
