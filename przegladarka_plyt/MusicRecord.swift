@@ -28,10 +28,10 @@ class MusicRecord: NSObject, NSCoding {
     required convenience init?(coder decoder: NSCoder) {
         guard let artist = decoder.decodeObject(forKey: "artist") as? String,
             let album = decoder.decodeObject(forKey: "album") as? String,
-            let genre = decoder.decodeObject(forKey: "genre") as? String,
-            let year = decoder.decodeObject(forKey: "year") as? Int,
-            let tracks = decoder.decodeObject(forKey: "tracks") as? Int
+            let genre = decoder.decodeObject(forKey: "genre") as? String
             else { return nil }
+        let year = decoder.decodeInteger(forKey: "year")
+        let tracks = decoder.decodeInteger(forKey: "tracks")
         
         self.init(artist, album, genre, year, tracks)
     }
@@ -40,7 +40,7 @@ class MusicRecord: NSObject, NSCoding {
         aCoder.encode(self.artist, forKey: "artist")
         aCoder.encode(self.album, forKey: "album")
         aCoder.encode(self.genre, forKey: "genre")
-        aCoder.encodeCInt(Int32(self.year), forKey: "year")
-        aCoder.encodeCInt(Int32(self.tracks), forKey: "tracks")
+        aCoder.encode(self.year, forKey: "year")
+        aCoder.encode(self.tracks, forKey: "tracks")
     }
 }
