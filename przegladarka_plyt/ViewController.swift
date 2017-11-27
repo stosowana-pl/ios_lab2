@@ -183,11 +183,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        musicRecords = self.loadAlbum()
-        
-        if (musicRecords.isEmpty) {
+        if(!FileManager().fileExists(atPath: myFilePath)) {
             self.requestData()
         } else {
+            musicRecords = self.loadAlbum()
             DispatchQueue.main.async {
                 self.updateView()
             }
